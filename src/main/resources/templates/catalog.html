@@ -33,6 +33,7 @@
         <th>Title</th>
         <th>Author</th>
         <th>Description</th>
+        <th>Action</th>
     </tr>
     </thead>
 
@@ -42,13 +43,31 @@
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
         <td th:text="${book.description}"></td>
+
+        <!-- Add to Cart button -->
+        <td>
+            <form th:action="@{/cart/add}" method="post">
+
+                <input type="hidden"
+                       name="isbn"
+                       th:value="${book.isbn}">
+
+                <button type="submit">
+                    Add to Cart
+                </button>
+
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
 
-<!-- No results message -->
 <p th:if="${!#strings.isEmpty(query) and #lists.isEmpty(books)}">
     No books found.
+</p>
+
+<p>
+    <a th:href="@{/cart}">View Shopping Cart</a>
 </p>
 
 </body>
