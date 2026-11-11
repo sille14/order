@@ -2,7 +2,7 @@ package com.example.order.model;
 
 public class Book {
 
-    private String isbn;
+    private long isbn;
     private String title;
     private String author;
     private String description;
@@ -10,11 +10,11 @@ public class Book {
     public Book(){
     }
 
-    public String getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 
