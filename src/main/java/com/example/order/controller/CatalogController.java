@@ -18,7 +18,7 @@ public class CatalogController {
         this.catalogService = catalogService;
     }
 
-    @GetMapping
+    @GetMapping("/catalog")
     public String showCatalog(
             @RequestParam(defaultValue = "") String query,
             Model model) {
