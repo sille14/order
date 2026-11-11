@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+
+<h1>Shopping Cart</h1>
+
+<!-- Empty cart message -->
+<p th:if="${#lists.isEmpty(cart.items)}">
+    Your shopping cart is empty.
+</p>
+
+<!-- Shopping cart table -->
+<table border="1" th:unless="${#lists.isEmpty(cart.items)}">
+    <thead>
+    <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Quantity</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="item : ${cart.items}">
+        <td th:text="${item.book.isbn}"></td>
+        <td th:text="${item.book.title}"></td>
+        <td th:text="${item.book.author}"></td>
+        <td th:text="${item.quantity}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Total number of books -->
+<h3>
+    Total books:
+    <span th:text="${cart.totalQuantity}"></span>
+</h3>
+
+<!-- Return to catalog -->
+<a th:href="@{/catalog}">Continue Shopping</a>
+
+</body>
+</html>
