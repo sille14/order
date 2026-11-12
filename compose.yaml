@@ -1,0 +1,22 @@
+
+services:
+
+  catalog:
+    image: bookstore-catalog:latest
+    build:
+      context: ../catalog
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  order:
+    image: bookstore-order:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      CATALOG_API_BASE_URL: http://catalog:8080
+    depends_on:
+      - catalog
